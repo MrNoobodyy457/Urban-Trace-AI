@@ -1,0 +1,26 @@
+# Core ML/CV
+torch==2.1.0
+torchvision==0.16.0
+torchaudio==2.1.0
+ultralytics==8.0.200
+opencv-python==4.8.1.78
+
+# OCR & Text
+easyocr==1.7.1
+pytesseract==0.3.10
+
+# Tracking
+numpy==1.24.3
+scipy==1.11.2
+
+# Database
+sqlalchemy==2.0.21
+psycopg2-binary==2.9.9
+
+# API
+fastapi==0.104.1
+uvicorn==0.24.0
+
+# Utils
+pandas==2.1.1
+pillow==10.0.1

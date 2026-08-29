@@ -1,0 +1,65 @@
+# UrbanTrace AI Configuration
+
+# ============ DETECTION ============
+detection:
+  model_size: 'm'  # 'n', 's', 'm', 'l', 'x'
+  confidence_threshold: 0.5
+  vehicle_classes: [2, 3, 5, 7]  # car, motorcycle, bus, truck
+
+# ============ ANPR (License Plate Reading) ============
+anpr:
+  ocr_engine: 'easyocr'  # 'easyocr' or 'tesseract'
+  confidence_threshold: 0.6
+  plate_pattern: '[A-Z]{2}[0-9]{2}[A-Z]{2}[0-9]{4}'  # Indian plate format
+
+# ============ TRACKING ============
+tracking:
+  tracker_type: 'centroid'  # 'centroid' or 'bytetrack'
+  max_age: 30  # frames to keep track alive without detection
+  distance_threshold: 50  # pixels for centroid matching
+
+# ============ CROSS-CAMERA ASSOCIATION ============
+association:
+  plate_similarity_threshold: 0.85
+  time_constraint_factor: 2.0  # Allow 2x estimated travel time
+  use_appearance: false  # Requires re-id model
+
+# ============ DATABASE ============
+database:
+  type: 'sqlite'  # 'sqlite' or 'postgresql'
+  sqlite_path: 'data/nabrad.db'
+  # postgresql:
+  #   host: 'localhost'
+  #   port: 5432
+  #   user: 'postgres'
+  #   password: 'password'
+  #   database: 'nabrad'
+
+# ============ API ============
+api:
+  host: '127.0.0.1'
+  port: 8000
+  debug: true
+
+# ============ PATHS ============
+paths:
+  videos: 'data/test_videos/'
+  output: 'data/sample_output/'
+  models: './'
+
+# ============ CAMERAS ============
+cameras:
+  cam_north_1:
+    travel_time_to:
+      cam_north_2: 8  # seconds
+  cam_north_2:
+    travel_time_to:
+      cam_north_1: 8
+      cam_center: 6
+  cam_center:
+    travel_time_to:
+      cam_north_2: 6
+      cam_south_1: 10
+  cam_south_1:
+    travel_time_to:
+      cam_center: 10
