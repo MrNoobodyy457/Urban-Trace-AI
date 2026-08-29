@@ -1,0 +1,30 @@
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+
+# Model Weights (Large binary files)
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Video & Run Directories
+input_vids/
+output_runs/
+runs/
+
+# Video file formats (if loose in root)
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# OS & Editor artifacts
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
