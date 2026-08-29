@@ -1,0 +1,12 @@
+# DeepOCSORT Visual Re-ID Tracker Configuration
+tracker_type: deepocsort
+reid_weights: osnet_x0_25_msmt17.pt # Visual embedding model (auto-downloaded on first run)
+fp16: True # Half precision on GPU
+per_class: False # Share ID pool across detections
+
+# Association & Memory thresholds
+det_thresh: 0.30 # Ignore weak noise detections
+max_age: 180 # Keep lost/occluded vehicles alive for 6 seconds at 30fps
+min_hits: 3 # Object must be detected for 3 frames before assigning valid track
+iou_threshold: 0.30 # Relaxed spatial IoU matching
+reid_thresh: 0.40 # Cosine distance threshold for visual re-identification
